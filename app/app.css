@@ -1,0 +1,28 @@
+@import "nativescript-theme-core/css/core.light.css";
+
+StackLayout{
+    padding: 200px;
+    /*background-color: #03a9f4;*/
+}
+
+Image{
+    width: 300px;
+    height: 300px;
+}
+
+ListPicker{
+    color: #1565C0;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+TabView{
+    tab-text-color: #00b9e6;
+    selected-tab-text-color: #1565C0;
+    android-selected-tab-text-color: #FFFFFF;
+    border-bottom-color: #FFFFFF;
+}
+
+GridLayout{
+    font-size: 30;
+}

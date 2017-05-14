@@ -1,0 +1,24 @@
+### Node template
+# Logs
+logs
+*.log
+npm-debug.log*
+
+#TS builds
+~* 
+*.js
+
+hooks/
+node_modules/
+
+### proyect ###
+App_Resources/
+
+# typings ###
+typings/
+
+## VSCode Config ###
+.vscode/
+
+## Plataforms
+platforms/
