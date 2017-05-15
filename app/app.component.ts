@@ -3,9 +3,8 @@ import { Component } from "@angular/core";
 import * as tabViewModule from 'tns-core-modules/ui/tab-view';
 import * as buttonModule from "tns-core-modules/ui/button";
 
-var vibrator = require("nativescript-vibrate");
+let vibrator = require("nativescript-vibrate");
 let sound = require("nativescript-sound");
-
 
 const GREEN:string = '~/images/boton-green.png';
 const RED:string = '~/images/boton-red.png';
@@ -44,22 +43,20 @@ const RED:string = '~/images/boton-red.png';
         </ListPicker>
       </StackLayout>
     </TabView>
-    
-    
-  `
+    `
 })
 export class AppComponent{
 
   soundsRoutes:any[];
   soundsNames:string[];
-  selectedSoundIndex:number;
+  selectedIndex:number;
   buttonType:string = GREEN;
+  currentSound:any;
 
   constructor(private _soundService:SoundService){};
 
   public playSound(){
-    let sound = this.soundsRoutes[this.selectedSoundIndex?this.selectedSoundIndex:0].fileRoute;
-    sound.play();
+    this.currentSound.play();
     this.buttonType = RED;
     vibrator.vibration(1000);
     setTimeout(() => {
@@ -67,8 +64,13 @@ export class AppComponent{
     }, 1000);
   }
 
+  private createSound(index:number){
+    let route = this.soundsRoutes[index].fileRoute;
+    this.currentSound = sound.create(route);
+  };
+
   public selectedIndexChanged(picker) {
-    this.selectedSoundIndex = picker.selectedIndex;
+    this.createSound(picker.selectedIndex || 0);
   }
 
   public tabViewIndexChange(tab:number){
@@ -93,5 +95,8 @@ export class AppComponent{
       default:
         break
     };
+    let index = 0;
+    this.selectedIndex = 0;
+    this.createSound(index);
   }
 }
