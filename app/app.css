@@ -1,5 +1,11 @@
 @import "nativescript-theme-core/css/core.light.css";
 
+ActionBar{
+    background-color: #009688;
+    font-family: 'Lato-Bold';
+    color:#B2DFDB;
+}
+
 StackLayout{
     padding: 200px;
     /*background-color: #03a9f4;*/
@@ -11,16 +17,13 @@ Image{
 }
 
 ListPicker{
-    color: #1565C0;
-    font-weight: bold;
-    font-size: 20px;
+    font-family: 'Lato-Bold';
+    font-size: 30px;
 }
 
 TabView{
-    tab-text-color: #00b9e6;
-    selected-tab-text-color: #1565C0;
-    android-selected-tab-text-color: #FFFFFF;
-    border-bottom-color: #FFFFFF;
+    tab-text-color: #26A69A;
+    selected-tab-text-color: #B2DFDB;
 }
 
 GridLayout{

@@ -1,6 +1,8 @@
 import { SoundService } from './services/sounds.service';
 import { Component } from "@angular/core";
 import * as tabViewModule from 'tns-core-modules/ui/tab-view';
+import * as buttonModule from "tns-core-modules/ui/button";
+
 var vibrator = require("nativescript-vibrate");
 let sound = require("nativescript-sound");
 
@@ -11,12 +13,11 @@ const RED:string = '~/images/boton-red.png';
 @Component({
   selector: "my-app",
   template: `
-    <ActionBar title="La botonera de Joaco"></ActionBar>
+    <ActionBar title="Joaco's buttons"></ActionBar>
     
-    <TabView #tabView (selectedIndexChanged)="tabViewIndexChange(tabView.selectedIndex)">
+    <TabView backgroundColor="#E0F2F1" androidSelectedTabHighlightColor="#1DE9B6" tabBackgroundColor="#00796B" #tabView (selectedIndexChanged)="tabViewIndexChange(tabView.selectedIndex)">
       <StackLayout horizontalAlignment="center" verticalAlignment="center" *tabItem="{title: 'Animals'}">
         <Image (tap)="playSound()" src="{{buttonType}}"></Image>
-    
         <ListPicker #picker class="picker" [items]="soundsNames" [selectedIndex]="selectedIndex" verticalAlignment="bottom" horizontalAlignment="center"
           (selectedIndexChange)="selectedIndexChanged(picker)">
         </ListPicker>
@@ -53,7 +54,7 @@ export class AppComponent{
   soundsNames:string[];
   selectedSoundIndex:number;
   buttonType:string = GREEN;
-  
+
   constructor(private _soundService:SoundService){};
 
   public playSound(){
